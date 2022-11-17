@@ -125,7 +125,7 @@ def flatten(data)
     end
     newArr = []
     data.each do |el|
-        debugger
+        # debugger
         newArr += flatten(el)       # why doesn't << work?
     end
     newArr

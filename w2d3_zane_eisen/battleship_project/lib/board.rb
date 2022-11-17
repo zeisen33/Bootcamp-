@@ -71,7 +71,7 @@ class Board
                 if idx != row.length - 1
                     print "#{el} "
                 else
-                    print "#{el}\n"        #works, but \n needs to be inline for some reason
+                    print "#{el}\n"        #p doesn't work with \
                 end
             end
         end
