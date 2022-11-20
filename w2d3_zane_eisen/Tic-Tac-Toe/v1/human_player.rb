@@ -1,3 +1,5 @@
+require_relative "game.rb"
+
 class HumanPlayer
     attr_accessor :mark_value
 
@@ -20,7 +22,7 @@ class HumanPlayer
                     raise StandardError.new "row and column must be numbers"
                 end
             end
-        
+            
         rescue => e 
             p e.message
             retry
@@ -34,4 +36,4 @@ end
 
 p1 = HumanPlayer.new(":)")
 
-p p1.get_position
+# p p1.get_position
