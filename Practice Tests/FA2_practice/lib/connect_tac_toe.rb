@@ -3,6 +3,26 @@ require_relative 'player'
 
 class ConnectTacToe
 
+    def initialize(num_stacks, max_height)
+        @board = Board.new(num_stacks, max_height)
+        @player_1 = Player.new('y')
+        @player_2 = Player.new('b')
+        @current_player = @player_1
+    end
+
+    def switch_players!
+        if @current_player == @player_1
+            @current_player = @player_2
+        else 
+            @current_player = @player_1
+        end
+    end
+
+    def play_turn
+        a = @current_player.get_stack_index
+        @board.add(@current_player.token, a)
+        switch_players!
+    end
 
     # This ConnectTacToe#play method is given for free and does not need to be modified
     # It is used to make your game playable.
