@@ -76,24 +76,16 @@ class Board
             i += 1
         end
 
-        # backward = true         #this doesn't work bc it doesn't correctly check the elements of the grid's antidiagonal
-        # i = 0
-        # while i < @grid.length
-        #     j = 0
-        #     while j < @grid[0].length
-        #         if i !=j
-        #             j += 1
-        #             next
-        #         else
-        #             if @grid[i][j] != mark
-        #                 backward = false
-        #             end
-        #             j += 1
-        #         end
-        #     end
-        #     i += 1
-        # end
-        backward = @grid[0, 2] == mark && @grid[1,1] == mark && @grid[2, 0] == mark
+        backward = true   
+        i = 0
+        while i < @grid.length
+            j = @grid.length - i - 1
+            if @grid[i][j] != mark
+                backward = false
+            end
+            i += 1
+        end
+        # backward = @grid[0, 2] == mark && @grid[1,1] == mark && @grid[2, 0] == mark     # why doesn't this work??
         forward || backward
     end
 
