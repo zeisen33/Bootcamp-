@@ -13,7 +13,7 @@ class Board
     def initialize(num_stacks, max_height)
         @max_height = max_height
         @stacks = Board.build_stacks(num_stacks)
-        if @max_height < 4 || @stacks.length < 4
+        if max_height < 4 || num_stacks < 4        # why does this work but not same variables with @?
             raise StandardError.new 'rows and cols must be >= 4' 
         end        
     end
