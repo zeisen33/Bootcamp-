@@ -1,3 +1,4 @@
+require 'byebug'
 require '00_attr_accessor_object'
 
 describe AttrAccessorObject do
