@@ -110,7 +110,11 @@ class MetaCorgiSnacks
   end
 
   def method_missing(name, *args)
-    # Your code goes here...
+    if name[-4..-1] == 'info'
+      p 'working'
+    else 
+      raise NoMethodError.new
+    end
   end
 
 
