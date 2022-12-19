@@ -1,7 +1,7 @@
 require "date"
 
 class Cat < ApplicationRecord
-  @@CAT_COLORS = %i[orange tuxedo black gray white calico]
+  @@CAT_COLORS = %w[orange tuxedo black gray white calico]
 
   def self.get_cat_colors
     @@CAT_COLORS
