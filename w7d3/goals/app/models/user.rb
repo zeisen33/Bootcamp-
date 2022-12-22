@@ -13,6 +13,8 @@
 #
 #  index_users_on_username  (username)
 #
+
+# F I G V A P E B R
 class User < ApplicationRecord
     validates :username, :session_token, :password_digest, presence: true
     validates :username, :session_token, uniqueness: true
