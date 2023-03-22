@@ -6,8 +6,40 @@ import { useState, useEffect } from 'react';
 const Weather = () => {
   const [weather, setWeather] = useState(null)
 
-  const pollWeather = async (location) => {
-    let url = 'http://api.openweathermap.org/data/2.5/weather?';
+    
+
+  useEffect(() => {
+    const pollWeather = async (location) => {
+      let url = 'http://api.openweathermap.org/data/2.5/weather?';
+
+      const apiKey = process.env.REACT_APP_WEATHER_API
+
+      const params = {
+        lat: location.coords.latitude,
+        lon: location.coords.longitude,
+        appid: apiKey
+      };
+      
+      url += toQueryString(params);
+
+      const res = await fetch(url);
+      if (res.ok) {
+        const weather = await res.json();
+        this.setState({ weather });
+      }
+      else {
+        alert ("Check Weather API key!")
+      }
+    }
+    navigator.geolocation?.getCurrentPosition(
+      pollWeather,
+      (err) => console.log(err),
+      { timeout: 10000 }
+    )})
+
+    
+    
+    
 
     /* Remember that it's unsafe to expose your API key. (Note that pushing
     files that include your key to Github will expose your key!) In
@@ -18,31 +50,7 @@ const Weather = () => {
     "process.env.<variable_name>". Make sure to .gitignore your .env file!
     Also remember to restart your server (i.e., re-run "npm start") whenever
     you change your .env file. */
-    const apiKey = process.env.REACT_APP_WEATHER_API
-
-    const params = {
-      lat: location.coords.latitude,
-      lon: location.coords.longitude,
-      appid: apiKey
-    };
     
-    url += toQueryString(params);
-
-    const res = await fetch(url);
-    if (res.ok) {
-      const weather = await res.json();
-      this.setState({ weather });
-    }
-    else {
-      alert ("Check Weather API key!")
-    }
-  }
-
-  useEffect(navigator.geolocation?.getCurrentPosition(
-    pollWeather,
-    (err) => console.log(err),
-    { timeout: 10000 }
-  ))
 
   // componentDidMount() {
     //       navigator.geolocation?.getCurrentPosition(
