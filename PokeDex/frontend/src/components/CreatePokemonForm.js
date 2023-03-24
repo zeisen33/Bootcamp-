@@ -50,7 +50,7 @@ const CreatePokemonForm = ({ hideForm }) => {
       move2,
       moves: [move1, move2]
     };
-    console.log(payload)
+    // console.log(payload)
     let createdPokemon = await dispatch(createPokemon(payload));
     // console.log(createdPokemon)
     if (createdPokemon) {
