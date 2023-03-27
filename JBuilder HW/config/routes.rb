@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :guests, only: [:show, :index] do
       resources :gifts, only: [:index], shallow: true
     end
-    resources :gifts, only: [:show, :index]
+    resources :gifts, only: [:show]
     resources :parties, only: [:show, :index]
     
   end
