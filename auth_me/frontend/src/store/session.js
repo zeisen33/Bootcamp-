@@ -71,4 +71,20 @@ export function storeCSRFToken(response) {
   if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
 }
 
+export const signup = (user) => async (dispatch) => {
+  const username = user.username;
+  const email = user.email;
+  const password = user.password;
+
+  const res = await csrfFetch('/api/users', {
+    method: 'POST',
+    body: JSON.stringify({username, email, password})
+  })
+    
+  const data = await res.json();
+  storeCurrentUser(data.user)
+  dispatch(setCurrentUser(data.user))
+  return res
+}
+
 export default sessionReducer;
