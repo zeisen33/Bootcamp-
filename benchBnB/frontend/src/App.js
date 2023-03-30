@@ -5,12 +5,16 @@ import React from 'react'
 import Navigation from './components/Navigation';
 import BenchIndexPage from './components/BenchIndexPage';
 import BenchShowPage from './components/BenchShowPage';
+import BenchFormPage from './components/BenchFormPage';
 
 function App() {
   return (
     <>
       <Navigation />
       <Switch>
+        <Route path="/benches/new" >
+          <BenchFormPage />
+        </Route>
         <Route path={'/benches/:benchId'} >
           <BenchShowPage />
         </Route>

@@ -25,9 +25,17 @@ const BenchShowPage = () => {
             return null
         } else {
             return (
-                <header>{bench.title}
-                    <Link to='/'>All Benches</Link>
-                </header>
+                <div>
+                    <header>{bench.title}
+                        <Link to='/'>All Benches</Link>
+                    </header>
+                    <header>Details
+                        <p>{bench.description}</p>
+                        <ul>Seats: {bench.seating}</ul>
+                        <ul>Latitude: {bench.lat}</ul>
+                        <ul>Longitude: {bench.lng}</ul>
+                    </header>
+                </div>
             )
         }
     }
