@@ -10,6 +10,9 @@ class User < ApplicationRecord
   validates :username, format: { without: URI::MailTo::EMAIL_REGEXP, message: "Can't be an email" }
   validates :password, length: { in: 6..255 }, allow_nil: true
 
+  has_many :reviews, dependent: destroy
+  has_many :benches_reviewed, through: :reviews, source: :reviews, dependent: :destroy
+
   def self.find_by_credentials(credential, password)
     if credential =~ URI::MailTo::EMAIL_REGEXP
       user = User.find_by(email: credential)
