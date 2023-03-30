@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { useLocation } from "react-router-dom"
+import { Redirect, useLocation } from "react-router-dom"
+import { createBench } from "../../store/benches"
 
 const BenchForm = () => {
     const dispatch = useDispatch
@@ -12,7 +13,9 @@ const BenchForm = () => {
     const [errors, setErrors] = useState([])
     const location = useLocation()
 
-    const [lat, lng] = location.search
+    const splitLoc = location.search.indexOf('.')
+    const lat = location.search.slice(1, splitLoc)
+    const lng = location.search.slice(splitLoc)
 
     const changeTitle = (e) => {
         e.preventDefault();
@@ -32,8 +35,20 @@ const BenchForm = () => {
     }
 
     const handleSubmit = () => {
-        dispatch(createBench({title, price, description, seating, lat, lng}))
+        debugger
+        const newBench = dispatch(createBench({title, price, description, seating, lat, lng}))
+        debugger
+
+        if (newBench.errors) {
+            errors.map((error) => {
+                return <ul>{error.full_messages}</ul>
+            })
+        } else {
+            <Redirect to='/' />
+        }
     }
+
+    // debugger
 
     return (
         <>
