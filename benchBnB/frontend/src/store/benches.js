@@ -59,9 +59,9 @@ const benchesReducer = (state={}, action) => {
         case SET_BENCHES:
             return { ...state, ...action.benches }
         case ADD_BENCH:
-            debugger
+            // debugger
             const benchId = action.benchData.id
-            nextState['bench'] = action.benchData
+            nextState[benchId] = action.benchData
             return nextState
         default:
             return state
