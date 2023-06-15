@@ -7,7 +7,7 @@ export default class FlappyBird {
   }
 
   restart() {
-    const level = new Level(this.dimensions)
+    const level = new Level(this.dimensions);
     this.animate(this.ctx)
   }
 
