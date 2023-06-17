@@ -1,6 +1,6 @@
 export default class Level {
   constructor(dimensions) {
-    this.dimensions = dimensions;
+    this.dimensions = dimensions
   }
 
   drawBackground(ctx) {
