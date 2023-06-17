@@ -1,6 +1,6 @@
 import Level from './level'
 
-export default class FlappyBird  {
+export default class FlappyBird {
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
     this.dimensions = { width: canvas.width, height: canvas.height };
@@ -8,7 +8,7 @@ export default class FlappyBird  {
 
   restart() {
     const level = new Level(this.dimensions);
-    this.animate(this.ctx)
+    this.animate(this.ctx);
   }
 
   animate() {
