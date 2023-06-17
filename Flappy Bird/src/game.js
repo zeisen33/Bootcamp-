@@ -1,4 +1,4 @@
-import Level from './level'
+import Level from './level';
 
 export default class FlappyBird {
   constructor(canvas) {
