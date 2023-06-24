@@ -12,6 +12,6 @@ export default class FlappyBird {
   }
 
   animate() {
-     Level.animate()
+     Level.animate();
   }
 }
