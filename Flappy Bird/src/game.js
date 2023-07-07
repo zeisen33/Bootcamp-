@@ -8,11 +8,11 @@ export default class FlappyBird {
   }
 
   restart() {
-    const level = new Level(this.dimensions)
-    this.animate(this.ctx)
+    this.level = new Level(this.dimensions)
+    this.animate()
   }
 
   animate() {
-     Level.animate()
+    this.level.animate(this.ctx)
   }
 }
