@@ -1,4 +1,7 @@
-
+const CONSTANTS = {
+    GRAVITY: 0.5,
+    FLAP_VELOCITY: -8
+}
 
 export default class Bird {
     constructor(dimensions) {
@@ -15,6 +18,16 @@ export default class Bird {
     }
 
     animate(ctx) {
+        this.move()
         this.drawBird(ctx)
+    }
+
+    move() {
+        this.y += this.velocity
+        this.velocity += CONSTANTS.GRAVITY
+    }
+
+    flap() {
+        this.velocity = CONSTANTS.FLAP_VELOCITY
     }
 }
