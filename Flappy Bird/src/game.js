@@ -1,4 +1,5 @@
 import Level from './level'
+import Bird from './bird'
 
 export default class FlappyBird {
   constructor(canvas) {
@@ -15,4 +16,5 @@ export default class FlappyBird {
   animate() {
     this.level.animate(this.ctx)
   }
+  
 }
