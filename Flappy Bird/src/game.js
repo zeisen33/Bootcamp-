@@ -4,14 +4,15 @@ export default class FlappyBird {
   constructor(canvas) {
     this.ctx = canvas.getContext("2d")
     this.dimensions = { width: canvas.width, height: canvas.height }
+    this.restart()
   }
 
   restart() {
-    const level = new Level(this.dimensions)
-    this.animate(this.ctx)
+    this.level = new Level(this.dimensions)
+    this.animate()
   }
 
   animate() {
-     Level.animate()
+    this.level.animate(this.ctx)
   }
 }
