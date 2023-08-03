@@ -23,7 +23,7 @@ export default class Level {
     ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height)   
   }
 
-  
+
   animate(ctx) {
     this.drawBackground(ctx)
     this.movePipes()
@@ -46,6 +46,8 @@ export default class Level {
     }) 
   }
 
+
+  // issue here, with this/binding
   drawPipes(ctx) {
     this.pipes.forEach(pipe => {
       ctx.fillStyle = 'green'
