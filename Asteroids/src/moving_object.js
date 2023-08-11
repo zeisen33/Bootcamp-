@@ -23,4 +23,9 @@ export default class MovingObject {
 
         ctx.fill()
     }
+
+    move() {
+        this.pos.x += this.vel.x 
+        this.pos.y += this.vel.y
+    }
 }
