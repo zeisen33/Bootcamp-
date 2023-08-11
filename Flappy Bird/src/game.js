@@ -1,5 +1,6 @@
 import Level from './level'
 import Bird from './bird'
+import { CONSTANTS as BIRD_CONSTANTS} from './bird'
 
 export default class FlappyBird {
   constructor(canvas) {
@@ -26,6 +27,10 @@ export default class FlappyBird {
     this.bird.animate(this.ctx)
     if (this.running) {
       requestAnimationFrame(this.animate.bind(this))
+    }
+    if (this.level.collidesWith(this.bird.getBounds()) || this.bird.y < 0 || (this.bird.y + BIRD_CONSTANTS.BIRD_HEIGHT > this.dimensions.height)) {
+      alert ('Crashed!')
+      this.restart()
     }
   }
 

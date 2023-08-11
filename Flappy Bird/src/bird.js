@@ -1,6 +1,8 @@
-const CONSTANTS = {
+export const CONSTANTS = {
     GRAVITY: 0.5,
-    FLAP_VELOCITY: -8
+    FLAP_VELOCITY: -8,
+    BIRD_WIDTH: 40,
+    BIRD_HEIGHT: 30
 }
 
 export default class Bird {
@@ -14,7 +16,7 @@ export default class Bird {
 
     drawBird(ctx) {
         ctx.fillStyle = "yellow"
-        ctx.fillRect(this.x, this.y, 40, 30)
+        ctx.fillRect(this.x, this.y, CONSTANTS.BIRD_WIDTH, CONSTANTS.BIRD_HEIGHT)
     }
 
     animate(ctx) {
@@ -29,5 +31,9 @@ export default class Bird {
 
     flap() {
         this.velocity = CONSTANTS.FLAP_VELOCITY
+    }
+
+    getBounds() {
+        return {topLeft: {x: this.x, y: this.y}, bottomRight: {x: this.x + CONSTANTS.BIRD_WIDTH, y: this.y + CONSTANTS.BIRD_HEIGHT}}
     }
 }

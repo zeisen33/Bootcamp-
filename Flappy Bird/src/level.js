@@ -227,6 +227,48 @@ export default class Level {
   eachPipe(callback) {
     this.pipes.forEach(callback.bind(this));
   }
+
+  //This method shall return true if the bird passed in is currently
+  //colliding with any pipe.
+  collidesWith(bounds) {
+
+    const rect_overlap = (rect1, rect2) => {
+      if (rect1.left > rect2.right || rect1.right < rect2.left) {
+        return false
+      }
+
+      if (rect1.top > rect2.bottom || rect1.bottom < rect2.top) {
+        return false
+      }
+
+      return true
+    }
+
+
+    let collision = false
+
+    this.eachPipe(pipe => {
+      const birdRect = {left: bounds.topLeft.x, right: bounds.bottomRight.x, top: bounds.topLeft.y, bottom: bounds.bottomRight.y}
+      if (rect_overlap(birdRect, pipe.topPipe) || rect_overlap(birdRect, pipe.bottomPipe)) {
+        collision = true
+      }
+    })
+
+    return collision
+  } 
+
+
+
+
+
+
+
+
+
+
+
+
+
   //This method shall return true if the bird passed in is currently
   //colliding with any pipe.
   // collidesWith(bird) {
