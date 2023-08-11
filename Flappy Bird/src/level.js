@@ -176,6 +176,7 @@ export default class Level {
     ctx.fillRect(0, 0, this.dimensions.width, this.dimensions.height);
   }
 
+
   // passedPipe(bird, callback) {
   //   this.eachPipe((pipe) => {
   //     if (pipe.topPipe.right < bird.left) {
