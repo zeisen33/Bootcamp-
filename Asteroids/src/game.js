@@ -11,14 +11,17 @@ export default class Game {
     }
 
     addAsteroids() {
-        for (let i = 0; i < Game.NUM_ASTEROIDS, i++;) {
-            this.asteroids.push(new Asteroid({pos: this.randomPosition()}))
+        for (let i = 0; i < 5; i++) {
+            console.log(i)
+            const ast = new Asteroid({pos: this.randomPosition()})
+            this.asteroids.push(ast)
         }
+        console.log(this.asteroids)
     }
 
     randomPosition() {
-        const xPos = Math.random() * DIM_X
-        const yPos = Math.random() * DIM_Y
+        const xPos = Math.random() * Game.DIM_X
+        const yPos = Math.random() * Game.DIM_Y
         return {x: xPos, y: yPos}
     }
 

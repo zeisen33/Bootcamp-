@@ -9,7 +9,7 @@ class Asteroid extends MovingObject {
         super(options)
         this.color = Asteroid.COLOR
         this.radius = Asteroid.RADIUS
-        this.vel = {x: Math.random(), y: Math.random}
+        this.vel = {x: 1, y: 1}
     }
 }
 

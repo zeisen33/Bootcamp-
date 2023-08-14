@@ -17,11 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const ctx = canvas.getContext('2d')
     
     
-    // const obj1 = new MovingObject({pos: {x: 50, y: 60}, color: 'green', radius: 10} )
-    // obj1.draw(ctx)
+    const obj1 = new MovingObject({pos: {x: 50, y: 60}, color: 'green', radius: 10} )
+    obj1.draw(ctx)
     
-    // const obj2 = new Asteroid({pos: {x: 75, y: 85}})
-    // obj2.draw(ctx)
+    const obj2 = new Asteroid({pos: {x: 75, y: 85}})
+    obj2.draw(ctx)
     
     const game = new Game()
     new GameView(game, ctx).start()

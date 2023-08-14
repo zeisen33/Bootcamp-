@@ -12,6 +12,8 @@ export default class MovingObject {
         ctx.fillStyle = this.color
         ctx.beginPath()
 
+        console.log('drawing')
+
         ctx.arc(
             this.pos.x,
             this.pos.y,
