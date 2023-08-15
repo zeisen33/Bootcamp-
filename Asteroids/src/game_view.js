@@ -23,6 +23,6 @@ export default class GameView {
         key('s', () => ship.power({x: 0, y: 1}))
         key('d', () => ship.power({x: 1, y: 1}))
 
-        // key('space', () => ship.fireBullet())
+        key('space', () => ship.fireBullet())
     }
 }

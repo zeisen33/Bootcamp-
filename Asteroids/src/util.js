@@ -1,10 +1,10 @@
 export function randomVec(length) {
     const deg = 2 * Math.PI * Math.random();
-    return scale([Math.sin(deg), Math.cos(deg)], length);
+    return scale({x: Math.sin(deg), y: Math.cos(deg)}, length);
 }
   
 export function scale(vec, m) {
-    return [vec[0] * m, vec[1] * m];
+    return {x: vec.x * m, y: vec.y * m};
 }
 
 export function wrap(coord, max) {
@@ -20,3 +20,12 @@ export function wrap(coord, max) {
 export function distance(pos1, pos2) {
     return Math.sqrt(Math.pow((pos2.x - pos1.x), 2) + Math.pow((pos2.y - pos1.y), 2))
 }
+export function norm(vec) {
+    return distance({x: 0, y: 0}, vec);
+}
+
+export function dir(vec) {
+    const normed = norm(vec);
+    return scale(vec, 1 / normed);
+}
+

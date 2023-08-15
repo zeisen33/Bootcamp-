@@ -1,6 +1,7 @@
 import Asteroid from "./asteroid"
 import * as Util from './util'
 import Ship from "./ship"
+import Bullet from "./bullet"
 
 export default class Game {
     static DIM_X = 480
@@ -18,8 +19,8 @@ export default class Game {
     add(object) {
         if (object instanceof Asteroid) {
             this.asteroids.push(object);
-        // } else if (object instanceof Bullet) {
-        //     this.bullets.push(object);
+        } else if (object instanceof Bullet) {
+            this.bullets.push(object);
         } else if (object instanceof Ship) {
             this.ships.push(object);
         } else {
