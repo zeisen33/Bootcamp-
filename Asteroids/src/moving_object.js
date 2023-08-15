@@ -1,4 +1,4 @@
-
+import * as Util from './util'
 
 export default class MovingObject {
     constructor(options) {
@@ -31,5 +31,15 @@ export default class MovingObject {
         this.pos.x += this.vel.x 
         this.pos.y += this.vel.y
         this.pos = this.game.wrap(this.pos)
+    }
+
+    isCollidedWith(otherObject) {
+        return Util.distance(this.pos, otherObject.pos) < this.radius + otherObject.radius
+    }
+
+    collideWith(otherObject) {
+        // console.log('collide')
+        // this.game.remove(this)
+        // this.game.remove(otherObject)
     }
 }
