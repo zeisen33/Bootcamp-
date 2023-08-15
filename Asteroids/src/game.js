@@ -40,17 +40,6 @@ export default class Game {
         return {x: Util.wrap(pos.x, Game.DIM_X), y: Util.wrap(pos.y, Game.DIM_Y)}
     }
 
-    // checkCollisions() {
-    //     for (let i = 0; i < Game.NUM_ASTEROIDS; i++) {
-    //         for (let j = 1; j < Game.NUM_ASTEROIDS; j++) {
-    //             if (i < j && this.asteroids[i].isCollidedWith(this.asteroids[j])) {
-    //                 this.asteroids[i].collideWith(this.asteroids[j])
-    //                 return
-    //             }
-    //         }
-    //     }
-    // }
-
     checkCollisions() {
         const allAsteroids = this.asteroids
         for (let i = 0; i < allAsteroids.length; i++) {
@@ -59,9 +48,7 @@ export default class Game {
                 const ast2 = allAsteroids[j]
 
                 if (i < j && ast1.isCollidedWith(ast2)) {
-                    // const collision = ast1.collideWith(ast2)
-                    // if (collision) return
-                    console.log('collision')
+                    ast1.collideWith(ast2)
                     return
                 }
             }
