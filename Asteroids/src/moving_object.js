@@ -6,6 +6,7 @@ export default class MovingObject {
         this.vel = options.vel
         this.radius = options.radius
         this.color = options.color
+        this.game = options.game
     }
 
     draw(ctx) {
@@ -29,5 +30,6 @@ export default class MovingObject {
     move() {
         this.pos.x += this.vel.x 
         this.pos.y += this.vel.y
+        this.pos = this.game.wrap(this.pos)
     }
 }

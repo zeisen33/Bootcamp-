@@ -1,4 +1,5 @@
 import Asteroid from "./asteroid"
+import * as Util from './util'
 
 export default class Game {
     static DIM_X = 480
@@ -13,7 +14,7 @@ export default class Game {
     addAsteroids() {
         for (let i = 0; i < 5; i++) {
             console.log(i)
-            const ast = new Asteroid({pos: this.randomPosition()})
+            const ast = new Asteroid({pos: this.randomPosition(), game: this})
             this.asteroids.push(ast)
         }
         console.log(this.asteroids)
@@ -33,5 +34,9 @@ export default class Game {
 
     moveObjects() {
         this.asteroids.forEach(asteroid => asteroid.move())
+    }
+
+    wrap(pos) {
+        return {x: Util.wrap(pos.x, Game.DIM_X), y: Util.wrap(pos.y, Game.DIM_Y)}
     }
 }
