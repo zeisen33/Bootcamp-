@@ -62,10 +62,13 @@ export default class Game {
 
     checkCollisions() {
         const allObjects = this.allObjects()
+        // console.log('allobjs:' + allObjects)
         for (let i = 0; i < allObjects.length; i++) {
             for (let j = 1; j < allObjects.length; j++) {
                 const obj1 = allObjects[i]
                 const obj2 = allObjects[j]
+
+                // console.log(`i: ${i} j: ${j} obj1: ${obj1} obj2: ${obj2}`)
 
                 if (i < j && obj1.isCollidedWith(obj2)) {
                     obj1.collideWith(obj2)
@@ -86,7 +89,7 @@ export default class Game {
 
     allObjects() {
         const allObjects = [].concat(this.ships, this.asteroids, this.bullets)
-        console.log(allObjects)
+        // console.log('allObjs:' + allObjects)
         return allObjects
     }
 }
