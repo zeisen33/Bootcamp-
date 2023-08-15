@@ -1,5 +1,6 @@
 import Asteroid from "./asteroid"
 import * as Util from './util'
+import Ship from "./ship"
 
 export default class Game {
     static DIM_X = 480
@@ -8,17 +9,36 @@ export default class Game {
 
     constructor() {
         this.asteroids = []
+        this.ships = []
+        this.bullets = []
+        
         this.addAsteroids()
+    }
+
+    add(object) {
+        if (object instanceof Asteroid) {
+            this.asteroids.push(object);
+        // } else if (object instanceof Bullet) {
+        //     this.bullets.push(object);
+        } else if (object instanceof Ship) {
+            this.ships.push(object);
+        } else {
+            throw new Error("unknown type of object");
+        }
     }
 
     addAsteroids() {
         for (let i = 0; i < Game.NUM_ASTEROIDS; i++) {
-            console.log(i)
-            const ast = new Asteroid({pos: this.randomPosition(), game: this})
-            this.asteroids.push(ast)
+            this.add(new Asteroid({pos: this.randomPosition(), game: this}))
         }
-        console.log(this.asteroids)
     }
+
+    addShip() {
+        const ship = new Ship({pos: this.randomPosition(), game: this})
+        this.add(ship)
+        return ship
+    }
+
 
     randomPosition() {
         const xPos = Math.random() * Game.DIM_X
@@ -28,12 +48,12 @@ export default class Game {
 
     draw(ctx) {
         ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)
-        this.asteroids.forEach(asteroid => asteroid.draw(ctx))
+        this.allObjects().forEach(object => object.draw(ctx))
     }
 
 
     moveObjects() {
-        this.asteroids.forEach(asteroid => asteroid.move())
+        this.allObjects().forEach(object => object.move())
     }
 
     wrap(pos) {
@@ -41,14 +61,14 @@ export default class Game {
     }
 
     checkCollisions() {
-        const allAsteroids = this.asteroids
-        for (let i = 0; i < allAsteroids.length; i++) {
-            for (let j = 1; j < allAsteroids.length; j++) {
-                const ast1 = allAsteroids[i]
-                const ast2 = allAsteroids[j]
+        const allObjects = this.allObjects()
+        for (let i = 0; i < allObjects.length; i++) {
+            for (let j = 1; j < allObjects.length; j++) {
+                const obj1 = allObjects[i]
+                const obj2 = allObjects[j]
 
-                if (i < j && ast1.isCollidedWith(ast2)) {
-                    ast1.collideWith(ast2)
+                if (i < j && obj1.isCollidedWith(obj2)) {
+                    obj1.collideWith(obj2)
                     return
                 }
             }
@@ -62,5 +82,11 @@ export default class Game {
 
     remove(asteroid) {
         this.asteroids.splice(this.asteroids.indexOf(asteroid), 1)
+    }
+
+    allObjects() {
+        const allObjects = [].concat(this.ships, this.asteroids, this.bullets)
+        console.log(allObjects)
+        return allObjects
     }
 }
