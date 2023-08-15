@@ -42,4 +42,8 @@ export default class MovingObject {
         // this.game.remove(this)
         // this.game.remove(otherObject)
     }
+
+    remove(object) {
+        this.game.remove(this);
+    };
 }

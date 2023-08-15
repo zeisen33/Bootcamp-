@@ -1,6 +1,7 @@
 import * as Util from './util.js'
 import MovingObject from './moving_object.js'
 import Ship from './ship.js'
+import Bullet from './bullet.js'
 
 class Asteroid extends MovingObject {
     static RADIUS = 25
@@ -17,7 +18,12 @@ class Asteroid extends MovingObject {
         if (otherObject instanceof Ship) {
             otherObject.relocate()
             return true
+        } else if (otherObject instanceof Bullet) {
+            this.remove()
+            otherObject.remove()
+            return true
         }
+    
         return false
     }
 }

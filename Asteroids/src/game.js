@@ -65,16 +65,22 @@ export default class Game {
         const allObjects = this.allObjects()
         // console.log('allobjs:' + allObjects)
         for (let i = 0; i < allObjects.length; i++) {
-            for (let j = 1; j < allObjects.length; j++) {
+            for (let j = 0; j < allObjects.length; j++) {
                 const obj1 = allObjects[i]
+                // console.log('obj1: ' + obj1)
                 const obj2 = allObjects[j]
+                // console.log('obj2: ' + obj2)
 
                 // console.log(`i: ${i} j: ${j} obj1: ${obj1} obj2: ${obj2}`)
 
-                if (i < j && obj1.isCollidedWith(obj2)) {
-                    obj1.collideWith(obj2)
-                    return
+
+                if (obj1.isCollidedWith(obj2)) {
+                    const collision = obj1.collideWith(obj2);
+                    if (collision) return;
                 }
+                // if (i !== j && obj1.isCollidedWith(obj2)) {
+                //     obj1.collideWith(obj2)
+                //     return
             }
         }
     }
@@ -84,8 +90,16 @@ export default class Game {
         this.checkCollisions()
     }
 
-    remove(asteroid) {
-        this.asteroids.splice(this.asteroids.indexOf(asteroid), 1)
+    remove(object) {
+        if (object instanceof Bullet) {
+            this.bullets.splice(this.bullets.indexOf(object), 1);
+          } else if (object instanceof Asteroid) {
+            this.asteroids.splice(this.asteroids.indexOf(object), 1);
+          } else if (object instanceof Ship) {
+            this.ships.splice(this.ships.indexOf(object), 1);
+          } else {
+            throw new Error("unknown type of object");
+          }
     }
 
     allObjects() {
