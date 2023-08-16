@@ -52,10 +52,13 @@ export default class Game {
         this.allObjects().forEach(object => object.draw(ctx))
     }
 
-
-    moveObjects() {
-        this.allObjects().forEach(object => object.move())
+    moveObjects(delta) {
+        this.allObjects().forEach(object => object.move(delta))
     }
+
+    // moveObjects() {
+    //     this.allObjects().forEach(object => object.move())
+    // }
 
     wrap(pos) {
         return {x: Util.wrap(pos.x, Game.DIM_X), y: Util.wrap(pos.y, Game.DIM_Y)}
@@ -85,8 +88,8 @@ export default class Game {
         }
     }
 
-    step() {
-        this.moveObjects()
+    step(delta) {
+        this.moveObjects(delta)
         this.checkCollisions()
     }
 

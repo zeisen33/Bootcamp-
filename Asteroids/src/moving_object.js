@@ -28,9 +28,10 @@ export default class MovingObject {
         ctx.fill()
     }
 
-    move() {
-        this.pos.x += this.vel.x 
-        this.pos.y += this.vel.y
+    move(delta) {
+        delta = delta || 1
+        this.pos.x += this.vel.x * delta / 20
+        this.pos.y += this.vel.y * delta / 20
 
         const pos = this.pos
 
@@ -43,6 +44,22 @@ export default class MovingObject {
         }
         this.pos = this.game.wrap(pos)
     }
+
+    // move() {
+    //     this.pos.x += this.vel.x 
+    //     this.pos.y += this.vel.y
+
+    //     const pos = this.pos
+
+    //     if (this.game.isOutOfBounds(pos)) {
+    //         if (this.isWrappable) {
+    //             this.pos = this.game.wrap(this.pos)
+    //         } else {
+    //             this.remove(this)
+    //         }
+    //     }
+    //     this.pos = this.game.wrap(pos)
+    // }
 
     isCollidedWith(otherObject) {
         return Util.distance(this.pos, otherObject.pos) < this.radius + otherObject.radius
