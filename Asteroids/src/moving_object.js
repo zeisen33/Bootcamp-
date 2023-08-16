@@ -14,7 +14,7 @@ export default class MovingObject {
         ctx.fillStyle = this.color
         ctx.beginPath()
 
-        console.log('drawing')
+        // console.log('drawing')
 
         ctx.arc(
             this.pos.x,
@@ -66,7 +66,7 @@ export default class MovingObject {
     }
 
     collideWith(otherObject) {
-        console.log('collide')
+        // console.log('collide')
         // this.game.remove(this)
         // this.game.remove(otherObject)
     }

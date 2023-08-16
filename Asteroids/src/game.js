@@ -48,7 +48,7 @@ export default class Game {
     }
 
     draw(ctx) {
-        ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)
+        ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y)   
         this.allObjects().forEach(object => object.draw(ctx))
     }
 

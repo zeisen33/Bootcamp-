@@ -18,11 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     canvas.height = Game.DIM_Y
     const ctx = canvas.getContext('2d')
        
-    const img = new Image()
-    img.onload = () => {
-        ctx.drawImage(img, 50, 60)
-    }
-    img.src = 'Z.png'    
+ 
 
     // const obj1 = new MovingObject({pos: {x: 50, y: 60}, color: 'green', radius: 10} )
     // obj1.draw(ctx)

@@ -9,6 +9,11 @@ export default class GameView {
 
 
     start() {
+        // this.img = new Image()
+        // this.img.onload = () => {
+        //     this.ctx.drawImage(this.img, 50, 60)
+        // }
+        // this.img.src = 'Z.png' 
         this.bindKeyHandlers()
         this.lastTime = 0
         requestAnimationFrame(this.animate.bind(this))
@@ -37,7 +42,16 @@ export default class GameView {
         const timeDelta = currTime - this.lastTime
 
         this.game.step(timeDelta)
+        // this.ctx.drawImage(this.img, 50, 60)
+
+        // const img = new Image()
+        // img.onload = () => {
+        //     this.ctx.drawImage(img, 50, 60)
+        // }
+        // img.src = 'Z.png' 
+
         this.game.draw(this.ctx)
+       
         this.lastTime = currTime
 
         requestAnimationFrame(this.animate.bind(this))
