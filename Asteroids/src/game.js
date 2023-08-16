@@ -107,4 +107,14 @@ export default class Game {
         // console.log('allObjs:' + allObjects)
         return allObjects
     }
+
+    isOutOfBounds(pos) {
+        if (pos.x > Game.DIM_X || pos.x < 0) {
+            return true
+        } else if (pos.y > Game.DIM_Y || pos.y < 0) {
+            return true
+        }
+
+        return false
+    }
 }

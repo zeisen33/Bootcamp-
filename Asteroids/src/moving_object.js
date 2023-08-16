@@ -7,6 +7,7 @@ export default class MovingObject {
         this.radius = options.radius
         this.color = options.color
         this.game = options.game
+        this.isWrappable = true
     }
 
     draw(ctx) {
@@ -30,7 +31,17 @@ export default class MovingObject {
     move() {
         this.pos.x += this.vel.x 
         this.pos.y += this.vel.y
-        this.pos = this.game.wrap(this.pos)
+
+        const pos = this.pos
+
+        if (this.game.isOutOfBounds(pos)) {
+            if (this.isWrappable) {
+                this.pos = this.game.wrap(this.pos)
+            } else {
+                this.remove(this)
+            }
+        }
+        this.pos = this.game.wrap(pos)
     }
 
     isCollidedWith(otherObject) {

@@ -10,5 +10,6 @@ export default class Bullet extends MovingObject {
         super(options)
         this.radius = Bullet.RADIUS
         this.color = Bullet.COLOR
+        this.isWrappable = false
     }
 }
