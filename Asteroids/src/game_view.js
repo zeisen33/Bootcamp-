@@ -1,3 +1,4 @@
+// Background image needs to be a moving object
 
 
 export default class GameView {
