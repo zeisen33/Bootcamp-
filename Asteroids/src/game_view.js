@@ -1,7 +1,6 @@
 // Background image needs to be a moving object
 
 
-
 export default class GameView {
     constructor(game, ctx) {
         this.game = game
@@ -10,6 +9,7 @@ export default class GameView {
     }
 
 
+    
     start() {
         // this.img = new Image()
         // this.img.onload = () => {
