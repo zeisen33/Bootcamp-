@@ -8,7 +8,7 @@ export default class Ship extends MovingObject {
     static RADIUS = 15
     static COLOR = 'green'
 
-    
+
     constructor(options) {
         super(options)
         this.vel = {x: 0, y: 0}
@@ -26,6 +26,7 @@ export default class Ship extends MovingObject {
         this.vel.x += impulse.x
         this.vel.y += impulse.y
     }
+
 
     fireBullet() {
         // console.log('vel' + this.vel)
@@ -47,5 +48,7 @@ export default class Ship extends MovingObject {
         })
         this.game.add(bullet)
     }
+
+    
 }
 
